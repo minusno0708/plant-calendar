@@ -5,6 +5,9 @@ import Logout from './components/Logout';
 
 export default function Home() {
   const { data: session, status } = useSession();
+  const accessToken = session?.accessToken;
+
+  console.log(accessToken);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -17,6 +20,11 @@ export default function Home() {
         {status === 'authenticated' ? (
           <div>
             <p>ようこそ {session.user?.email} さん</p>
+            
+            <div>
+              <p>カレンダー</p>
+              <p>{session.user?.name}</p>
+            </div>
             <div>
               <Logout />
             </div>
